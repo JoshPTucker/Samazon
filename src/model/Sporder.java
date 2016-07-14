@@ -16,7 +16,7 @@ public class Sporder implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="SPORDERS_ORDERID_GENERATOR", sequenceName="SPORDERS_SEQ")
+	@SequenceGenerator(name="SPORDERS_ORDERID_GENERATOR", sequenceName="SPORDERS_SEQ", allocationSize=1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SPORDERS_ORDERID_GENERATOR")
 	private long orderid;
 
