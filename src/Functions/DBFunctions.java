@@ -8,7 +8,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 
-import customTools.DBUtil;
+import Functions.DBUtil;
 import model.Sporder;
 import model.Spproduct;
 
@@ -47,19 +47,32 @@ public class DBFunctions {
 
 	public static void addCart(List<Sporder> cart){
 		EntityManager em = DBUtil.getEmFactory().createEntityManager();
-		EntityTransaction trans = em.getTransaction();
-		for(Sporder order:cart){
-			try {
+		EntityTransaction trans = null;
+		try {
+			for(Sporder order:cart){
+				trans = em.getTransaction();
 				trans.begin();
 				em.persist(order);
 				trans.commit();
-			} catch (Exception e) {
-				trans.rollback();
-			} finally {
-				em.close();
 			}
+		} catch (Exception e) {
+			trans.rollback();
+		} finally {
+			em.close();
 		}
 	}
-	
-	
+
+	public static void insert(Sporder o) {
+        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        EntityTransaction trans = em.getTransaction();
+        try {
+            trans.begin();
+            em.persist(o);
+            trans.commit();
+        } catch (Exception e) {
+            trans.rollback();
+        } finally {
+            em.close();
+        }
+    }
 }

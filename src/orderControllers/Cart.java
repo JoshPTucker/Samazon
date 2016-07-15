@@ -10,11 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import Functions.DBFunctions;
 import model.Spuser;
-import model.Sporder;
 
-/**
- * Servlet implementation class Cart
- */
 @WebServlet("/Cart")
 public class Cart extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -36,10 +32,7 @@ public class Cart extends HttpServlet {
 		request.getRequestDispatcher("/cart").forward(request,response);
 	}
 
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-
 }

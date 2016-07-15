@@ -47,11 +47,16 @@ public class AddToCart extends HttpServlet {
 		if(user==null){
 			if(cart==null){
 				cart = new ArrayList<Sporder>();
-				
+				cart.add(order);
 			}
+			else{
+				cart.add(order);
+			}
+			session.setAttribute("cart", cart);
 		}
-		
-		
+		else{
+			DBFunctions.insert(order);
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
