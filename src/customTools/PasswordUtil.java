@@ -1,6 +1,6 @@
 package customTools;
 
-public class Password {
+public class PasswordUtil {
 	
 	public double hashPassword(String password) {
 		double hash = 0.0;
