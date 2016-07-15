@@ -25,7 +25,7 @@
 			<tbody>
 					<tr>
 						<td><img src="${currproduct.productpicture}" height="200" width="200"></img></td>
-						<td><c:out value="${currproduct.productprice}" /></td>
+						<td>$<c:out value="${currproduct.productprice}" /></td>
 						<td><form action="AddToCart" method="get">
 						<input type="hidden" name="productid" id="productid" value="${currproduct.productid}"/>
 						<input type ="text" name="quantity" id="quantity" value="1" width="100"/>

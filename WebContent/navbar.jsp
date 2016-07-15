@@ -3,7 +3,7 @@
 <nav class="navbar navbar-default">
 	<div class="container-fluid">
 		<div class="navbar-header">
-			<p class="navbar-brand">Gulp</p>
+			<p class="navbar-brand">Samazon</p>
 		</div>
 		<ul class="nav navbar-nav">
 			<li class="active"><a href="./Home">Home</a></li>

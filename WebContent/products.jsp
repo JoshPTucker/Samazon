@@ -25,7 +25,7 @@
 					<tr>
 						<td><img src="${products.productpicture}" height="100" width="100"></img></td>
 						<td><c:out value="${products.productname}" /></td>
-						<td><c:out value="${products.productprice}" /></td>
+						<td>$<c:out value="${products.productprice}" /></td>
 						<td><form action="Details" method="get">
 						<input type="hidden" name="productid" id="productid" value="${products.productid}"/>
 						<input type="submit" name="submit" id="submit" value="Veiw Details"/>
