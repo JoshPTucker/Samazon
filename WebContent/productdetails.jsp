@@ -28,7 +28,7 @@
 						<td><c:out value="${currproduct.productprice}" /></td>
 						<td><form action="AddToCart" method="get">
 						<input type="hidden" name="productid" id="productid" value="${currproduct.productid}"/>
-						<input type ="text" name="quantity" id="quantity" value="1"/>
+						<input type ="text" name="quantity" id="quantity" value="1" width="100"/>
 						<input type="submit" name="submit" id="submit" value="Add to cart"/>
 						</form>
 						</td>

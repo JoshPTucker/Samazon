@@ -17,7 +17,6 @@
 				<tr>
 					<th>            </th>
 					<th>Product name</th>
-					<th>Product description</th>
 					<th>Product price</th>
 				</tr>
 			</thead>
@@ -29,12 +28,15 @@
 						<td><c:out value="${products.productprice}" /></td>
 						<td><form action="Details" method="get">
 						<input type="hidden" name="productid" id="productid" value="${products.productid}"/>
-						<input type="submit" name="submit" id="submit" value="Veiw Details">
+						<input type="submit" name="submit" id="submit" value="Veiw Details"/>
 						</form>
-						</td>
-						<td><form action="AddToCart" method="get">
+						
+						<form action="AddToCart" method="get">
 						<input type="hidden" name="productid" id="productid" value="${products.productid}"/>
-						<input type="submit" name="submit" id="submit" value="Add to cart">
+						<fieldset>
+						<input type ="text" name="quantity" id="quantity" value="1"/>
+						</fieldset>
+						<input type="submit" name="submit" id="submit" value="Add to cart"/>
 						</form>
 						</td>
 					</tr>

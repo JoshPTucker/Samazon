@@ -38,7 +38,7 @@
 	<h1>orders</h1>
 		<table class="table table-bordered table-striped table-hover">
 		<thead>
-				<tr>
+				<tr><th>            </th>
 					<th>Product name</th>
 					<th>Product price</th>
 					<th>Quantity</th>
