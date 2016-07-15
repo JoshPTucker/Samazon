@@ -38,7 +38,6 @@ public class AddToCart extends HttpServlet {
 		
 		Sporder order = new Sporder();
 		
-		
 		order.setQuantity(new BigDecimal(request.getParameter("quantity")));
 		order.setSpproduct(product);
 		order.setSpuser(user);

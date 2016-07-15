@@ -1,14 +1,18 @@
 package orderControllers;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import Functions.DBFunctions;
 import model.Sporder;
+import model.Spuser;
 
 @WebServlet("/ViewOrder")
 public class ViewOrder extends HttpServlet {
@@ -19,11 +23,21 @@ public class ViewOrder extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Sporder order = DBFunctions.getOrderByID(request.getParameter("orderid"));
+		HttpSession session = request.getSession();
+		Spuser user = (Spuser)session.getAttribute("user");
 		
-		request.setAttribute("order", order);
+		List<Sporder> orders = DBFunctions.getOrders(user.getUserid(), 3);
 		
-		request.getRequestDispatcher("/confirmOrder.jsp");
+		double total = 0;
+		
+		for(Sporder o:orders){
+			total+= o.getQuantity().doubleValue()*o.getSpproduct().getProductprice().doubleValue();
+		}
+
+		request.setAttribute("order", orders);
+		request.setAttribute("total", total);
+		
+		request.getRequestDispatcher("/confirmOrder.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
