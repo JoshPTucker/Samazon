@@ -46,11 +46,12 @@ public class DBFunctions {
 		return r;
 	}
 
-	public static void addCart(List<Sporder> cart){
+	public static void addCart(List<Sporder> cart, Spuser user){
 		EntityManager em = DBUtil.getEmFactory().createEntityManager();
 		EntityTransaction trans = null;
 		try {
 			for(Sporder order:cart){
+				order.setSpuser(user);
 				trans = em.getTransaction();
 				trans.begin();
 				em.persist(order);

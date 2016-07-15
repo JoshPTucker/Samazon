@@ -79,7 +79,7 @@ public class Login extends HttpServlet {
                 // TO DO: add shopping cart to the database
                 List<Sporder> cart = (List<Sporder>)session.getAttribute("cart");
                 if(cart !=null){
-                	DBFunctions.addCart(cart);
+                	DBFunctions.addCart(cart, user);
                 }                 
                 
                 nextURL = "/Products";
