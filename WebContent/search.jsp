@@ -25,7 +25,7 @@
 						<td><img src="${result.productpicture}"></td>
 						<td><c:out value="${result.procuctname}" /></td>
 						<td><c:out value="${result.productdescription}" /></td>
-						<td><c:out value="${result.poductprice}" /></td>
+						<td><c:out value="${result.productprice}" /></td>
 					</tr>
 				</c:forEach>
 			</tbody>

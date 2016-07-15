@@ -6,36 +6,35 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>product details</title>
+<title>products</title>
 </head>
 <body>
-<div>
-<h1><c:out value="${currproduct.productname}"/></h1>
-</div>
 	<div>
 		<table class="table table-bordered table-striped table-hover">
 			<thead>
 				<tr>
-					<th>product picture</th>
+					<th>            </th>
+					<th>Product name</th>
+					<th>Product description</th>
 					<th>Product price</th>
 				</tr>
 			</thead>
 			<tbody>
+				<c:forEach var="products" items="${products}">
 					<tr>
-						<td><img src="${currproduct.productpicture}"></img></td>
-						<td><c:out value="${currproduct.productprice}" /></td>
+						<td><img src="${products.productpicture}"></img></td>
+						<td><c:out value="${products.procuctname}" /></td>
+						<td><c:out value="${products.productprice}" /></td>
+						<!-- need to add button that takes user to product page -->
 						<td><form action="AddToCart" method="get">
-						<input type="hidden" name="productid" id="productid" value="${currproduct.productid}"/>
+						<input type="hidden" name="productid" id="productid" value="${products.productid}"/>
 						<input type="submit" name="submit" id="submit" value="Add to cart">
 						</form>
 						</td>
 					</tr>
+				</c:forEach>
 			</tbody>
 		</table>
-	</div>	
-	<div>
-	<h2>Description</h2>
-	<h3><c:out value="${currproduct.productdescription}" /></h3>
 	</div>
 </body>
 </html>
