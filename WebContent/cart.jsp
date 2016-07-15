@@ -12,6 +12,9 @@
 <body>
 	<jsp:include page="navbar.jsp"></jsp:include>
 	<div>
+	<h3>Your Cart</h3>
+	</div>
+	<div>
 		<table class="table table-bordered table-striped table-hover">
 			<thead>
 				<tr>
