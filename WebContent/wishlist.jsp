@@ -6,9 +6,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>products</title>
+<title>Wishlist</title>
+<jsp:include page="bootstrap.jsp"></jsp:include>
 </head>
 <body>
+<jsp:include page="navbar.jsp"></jsp:include>
 	<div>
 		<table class="table table-bordered table-striped table-hover">
 			<thead>
