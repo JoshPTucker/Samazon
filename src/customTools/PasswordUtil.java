@@ -1,21 +1,4 @@
 package customTools;
-
-<<<<<<< HEAD
-public class PasswordUtil {
-	
-	public double hashPassword(String password) {
-		double hash = 0.0;
-		
-		// TO DO: generate random hash string
-		String salt = "x";
-		
-		password += salt;
-		
-		// TO DO: hash the password & salt
-		
-		// return the hash
-		return hash;
-=======
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
@@ -48,7 +31,6 @@ public class PasswordUtil {
 
 		String encoded = DatatypeConverter.printBase64Binary(saltBytes);
 		return encoded;
->>>>>>> cae6d4099709c54edc06be683b1caf70e11945a9
 	}
 
 	public static boolean compareSaltedHashWithUserEnteredPwd(String salt, String userEnteredPwd, String expectedHash)
