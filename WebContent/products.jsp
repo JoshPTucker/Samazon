@@ -28,7 +28,7 @@
 						<td>$<c:out value="${products.productprice}" /></td>
 						<td><form action="Details" method="get">
 						<input type="hidden" name="productid" id="productid" value="${products.productid}"/>
-						<input type="submit" name="submit" id="submit" value="Veiw Details"/>
+						<input type="submit" name="submit" id="submit" value="View Details"/>
 						</form>
 						
 						<form action="AddToCart" method="get">
@@ -38,6 +38,12 @@
 						</fieldset>
 						<input type="submit" name="submit" id="submit" value="Add to cart"/>
 						</form>
+						<c:if test="${user != null}"><form action="AddToWishList" method="get">
+						<input type="hidden" name="productid" id="productid" value="${products.productid}"/>
+						<input type ="hidden" name="quantity" id="quantity" value="1"/>
+						<input type="submit" name="submit" id="submit" value="Add to wishlist"/>
+						</form>
+						</c:if>
 						</td>
 					</tr>
 				</c:forEach>

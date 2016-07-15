@@ -18,7 +18,7 @@
 		<table class="table table-bordered table-striped table-hover">
 			<thead>
 				<tr>
-					<th>product picture</th>
+					<th>             </th>
 					<th>Product price</th>
 				</tr>
 			</thead>
@@ -31,6 +31,12 @@
 						<input type ="text" name="quantity" id="quantity" value="1" width="100"/>
 						<input type="submit" name="submit" id="submit" value="Add to cart"/>
 						</form>
+						<c:if test="${user != null}"><form action="AddToWishList" method="get">
+						<input type="hidden" name="productid" id="productid" value="${currproduct.productid}"/>
+						<input type ="hidden" name="quantity" id="quantity" value="1"/>
+						<input type="submit" name="submit" id="submit" value="Add to wishlist"/>
+						</form>
+						</c:if>
 						</td>
 					</tr>
 			</tbody>

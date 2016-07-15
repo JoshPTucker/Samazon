@@ -24,7 +24,7 @@
 			<tbody>
 				<c:forEach var="order" items="${wishlist}">
 					<tr>
-						<td><img src="${order.spproduct.productpicture}"></img></td>
+						<td><img src="${order.spproduct.productpicture}" height="75" width="75"></img></td>
 						<td><c:out value="${order.spproduct.productname}" /></td>
 						<td><c:out value="${order.spproduct.productdescription}" /></td>
 						<td><c:out value="${order.spproduct.productprice}" /></td>
@@ -34,7 +34,7 @@
 						</form>
 						</td>
 						<td><form action="MoveWishlistToCart" method="get">
-						<input type="hidden" name="orderid" id="orderid" value="${orderid}"/>
+						<input type="hidden" name="orderid" id="orderid" value="${order.orderid}"/>
 						<input type="submit" name="submit" id="submit" value="Add to cart">
 						</form>
 						</td>
