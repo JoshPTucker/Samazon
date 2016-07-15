@@ -24,18 +24,18 @@
 				<th></th>
 				<th>Product Name</th>
 				<th>Product Description</th>
-				<th>Product Price</th>
+				<th>Price</th>
 				<th>Quantity</th>
 			</tr>
 		</thead>
 		<tbody>
 			<c:forEach var="order" items="${orders}">
 				<tr>
-					<td><img src="${order.spproduct.productpicture}" height="100"
-						width="100"></img></td>
+					<td><img src="${order.spproduct.productpicture}" height="50"
+						width="50"></img></td>
 					<td><c:out value="${order.spproduct.productname}" /></td>
 					<td><c:out value="${order.spproduct.productdescription}" /></td>
-					<td><c:out value="${order.spproduct.productprice}" /></td>
+					<td>$<c:out value="${order.spproduct.productprice}" /></td>
 					<td><c:out value="${order.quantity}" /></td>
 				</tr>
 			</c:forEach>

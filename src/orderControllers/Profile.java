@@ -38,7 +38,7 @@ public class Profile extends HttpServlet {
 		
 		List<Sporder> orders = DBFunctions.getOrders(user.getUserid(), 1);
 		
-		request.setAttribute("history", orders);
+		request.setAttribute("orders", orders);
 		
 		request.getRequestDispatcher("/profile.jsp").forward(request, response);;
 	}

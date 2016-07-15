@@ -30,9 +30,14 @@
 				</c:forEach>
 			</tbody>
 		</table>
+		<c:if test="${user != null}">
 		<form action="ViewOrder" method="get">
 			<input type="submit" name="submit" id="submit" value="purchase"></input>
 		</form>
+		</c:if>
+		<c:if test="${user == null}">
+		<a href ="./login.jsp">Login to purchase</a>
+		</c:if>
 	</div>
 </body>
 </html>
