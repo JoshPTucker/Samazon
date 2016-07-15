@@ -1,15 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>	
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<jsp:include page="navbar.jsp"></jsp:include>
 <jsp:include page="bootstrap.jsp"></jsp:include>
 <title>Login</title>
-
 <script>
 	function validateLogin() {
 		var email = $('#email').val();
@@ -36,7 +36,7 @@
 
 </head>
 <body>
-
+<jsp:include page="navbar.jsp"></jsp:include>
 	<form onsubmit="return validateLogin()" action="Login"
 		method="get">
 		<h4>Enter your email and password</h4>

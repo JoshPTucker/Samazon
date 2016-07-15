@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>	
 <nav class="navbar navbar-default">
 	<div class="container-fluid">
 		<div class="navbar-header">
@@ -10,7 +12,7 @@
 			<li><c:if test="${user}!=null"><a href="./Profile">Profile</a></c:if></li>
 			<li><c:if test="${user}!=null"><a href="./Wishlist">Wishlist</a></c:if></li>
 			<li><c:if test="${user}!=null"><a href="./Logout">Logout</a></c:if></li>
-			<li><c:if test="${user}==null"><a href="./login.jsp">Login</a></c:if></li>
+			<li><c:if test="${user == Null}"><a href="./login.jsp">Login</a></c:if></li>
 		</ul>
 		<div class="col-sm-3 col-md-3 pull-right">
 		<form class="navbar-form" role="search" action="Search">
