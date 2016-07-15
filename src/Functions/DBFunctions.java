@@ -75,4 +75,21 @@ public class DBFunctions {
             em.close();
         }
     }
+	
+	public static List<Spproduct> search(String search){
+		EntityManager em = DBUtil.getEmFactory().createEntityManager();
+		String qString = "select p from Spproduct p "
+                + "where p.productname like :search";
+		TypedQuery<Spproduct> q = em.createQuery(qString, Spproduct.class);
+		q.setParameter("search","%"+search+"%");
+		
+		List<Spproduct> r = null;
+		try{
+			r = q.getResultList();
+		}catch(NoResultException e){
+			System.out.println(e);
+			em.close();
+		}
+		return r;
+	}
 }
