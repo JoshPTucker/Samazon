@@ -23,7 +23,7 @@
 				<c:forEach var="result" items="${results}">
 					<tr>
 						<td><img src="${result.productpicture}"></td>
-						<td><c:out value="${result.procuctname}" /></td>
+						<td><c:out value="${result.productname}" /></td>
 						<td><c:out value="${result.productdescription}" /></td>
 						<td><c:out value="${result.productprice}" /></td>
 					</tr>
@@ -31,5 +31,15 @@
 			</tbody>
 		</table>
 	</div>
+<div>
+	<c:forEach var="result" items="${orders}">
+					<tr>
+						<td><img src="${result.spproduct.productpicture}"></td>
+						<td><c:out value="${result.spproduct.productname}" /></td>
+						<td><c:out value="${result.spproduct.productdescription}" /></td>
+						<td><c:out value="${result.spproduct.productprice}" /></td>
+					</tr>
+				</c:forEach>
+</div>
 </body>
 </html>
