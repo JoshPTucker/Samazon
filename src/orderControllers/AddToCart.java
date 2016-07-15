@@ -17,9 +17,6 @@ import model.Sporder;
 import model.Spproduct;
 import model.Spuser;
 
-/**
- * Servlet implementation class AddToCart
- */
 @WebServlet("/AddToCart")
 public class AddToCart extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -54,6 +51,8 @@ public class AddToCart extends HttpServlet {
 			session.setAttribute("cart", cart);
 		}
 		else{
+			cart.add(order);
+			session.setAttribute("cart", cart);
 			DBFunctions.insert(order);
 		}
 		
