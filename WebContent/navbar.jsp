@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>	
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <nav class="navbar navbar-default">
 	<div class="container-fluid">
 		<div class="navbar-header">
@@ -8,11 +9,12 @@
 		<ul class="nav navbar-nav">
 			<li class="active"><a href="./Home">Home</a></li>
 			<li><a href="./Products">Products</a></li>
-			<li><a href="./Cart">Cart</a></li>
+			<li><a href="./Cart">Cart :<c:out value="${fn: length(cart)}"/></a></li>
 			<c:if test="${user !=null}">
-			<li><a href="./Profile">Profile</a></li>
+			<li><a href="./Profile"><c:out value="${user.username}"/></a></li>
 			<li><a href="./Wishlist">Wishlist</a></li>
 			<li><a href="./Logout">Logout</a></li>
+			<li>                </li>
 			</c:if>
 			<c:if test="${user ==null}">
 			<li><a href="./login.jsp">Login</a></li>

@@ -54,6 +54,9 @@ public class DBFunctions {
 	}
 
 	public static void insert(Sporder o) {
+		if(o == null){
+			return ;
+		}
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
         try {

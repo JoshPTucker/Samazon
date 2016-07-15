@@ -81,7 +81,8 @@ public class Login extends HttpServlet {
                 if(cart !=null){
                 	DBFunctions.addCart(cart, user);
                 }                 
-                
+                cart = DBFunctions.getOrders(user.getUserid(), 2);
+                session.setAttribute("cart", cart);
                 nextURL = "/Products";
             }else{
                 nextURL = "/login.jsp";
