@@ -1,32 +1,26 @@
-package orderControllers;
+package Servlets;
 
 import java.io.IOException;
-import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import Functions.DBFunctions;
-import model.Spproduct;
-
-@WebServlet("/Products")
-public class Products extends HttpServlet {
+@WebServlet("/Logout")
+public class Logout extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    public Products() {
+	
+    public Logout() {
         super();
     }
 
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<Spproduct> products = DBFunctions.getProducts();
+		HttpSession session = request.getSession();
+		session.invalidate();
 		
-		request.setAttribute("products", products);
-
-		request.getRequestDispatcher("/products.jsp").forward(request,response);
+		request.getRequestDispatcher("/login.jsp").forward(request,response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

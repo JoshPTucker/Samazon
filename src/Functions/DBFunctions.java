@@ -151,4 +151,22 @@ public class DBFunctions {
             em.close();
         }
     }
+	
+	public static List<Sporder> search(String search, long id){
+		EntityManager em = DBUtil.getEmFactory().createEntityManager();
+		String qString = "select o from Spproduct o "
+                + "where o.Spproduct.productname like :search and o.userid=:userid";
+		TypedQuery<Sporder> q = em.createQuery(qString, Sporder.class);
+		q.setParameter("search","%"+search+"%");
+		q.setParameter("userid",id);
+		
+		List<Sporder> r = null;
+		try{
+			r = q.getResultList();
+		}catch(NoResultException e){
+			System.out.println(e);
+			em.close();
+		}
+		return r;
+	}
 }
