@@ -154,8 +154,8 @@ public class DBFunctions {
 	
 	public static List<Sporder> search(String search, long id){
 		EntityManager em = DBUtil.getEmFactory().createEntityManager();
-		String qString = "select o from Spproduct o "
-                + "where o.Spproduct.productname like :search and o.userid=:userid";
+		String qString = "select o from Sporder o "
+                + "where o.spproduct.productname like :search and o.spuser.userid=:userid";
 		TypedQuery<Sporder> q = em.createQuery(qString, Sporder.class);
 		q.setParameter("search","%"+search+"%");
 		q.setParameter("userid",id);

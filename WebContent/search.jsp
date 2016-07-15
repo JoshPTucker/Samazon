@@ -7,22 +7,25 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>search</title>
+<jsp:include page="bootstrap.jsp"></jsp:include>
 </head>
 <body>
+	<jsp:include page="navbar.jsp" />
 	<div>
 		<table class="table table-bordered table-striped table-hover">
 			<thead>
 				<tr>
-					<th>            </th>
+					<th></th>
 					<th>Product name</th>
 					<th>Product description</th>
 					<th>Product price</th>
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="result" items="${results}">
+				<c:forEach var="result" items="${products}">
 					<tr>
-						<td><img src="${result.productpicture}"></td>
+						<td><img src="${result.productpicture}" width="100"
+							height="100" /></td>
 						<td><c:out value="${result.productname}" /></td>
 						<td><c:out value="${result.productdescription}" /></td>
 						<td><c:out value="${result.productprice}" /></td>
@@ -31,15 +34,28 @@
 			</tbody>
 		</table>
 	</div>
-<div>
-	<c:forEach var="result" items="${orders}">
+	<div>
+	<h1>orders</h1>
+		<table class="table table-bordered table-striped table-hover">
+		<thead>
+				<tr>
+					<th>Product name</th>
+					<th>Product price</th>
+					<th>Quantity</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach var="result" items="${orders}">
 					<tr>
-						<td><img src="${result.spproduct.productpicture}"></td>
+						<td><img src="${result.spproduct.productpicture}"
+							height="100" width="100" /></td>
 						<td><c:out value="${result.spproduct.productname}" /></td>
-						<td><c:out value="${result.spproduct.productdescription}" /></td>
 						<td><c:out value="${result.spproduct.productprice}" /></td>
+						<td><c:out value="${result.quantity }" /></td>
 					</tr>
 				</c:forEach>
-</div>
+			</tbody>
+		</table>
+	</div>
 </body>
 </html>
