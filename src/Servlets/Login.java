@@ -82,7 +82,7 @@ public class Login extends HttpServlet {
                 	DBFunctions.addCart(cart);
                 }                 
                 
-                nextURL = "/products.jsp";
+                nextURL = "/Products";
             }else{
                 nextURL = "/login.jsp";
             }

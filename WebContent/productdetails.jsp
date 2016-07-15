@@ -7,8 +7,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>product details</title>
+<jsp:include page="bootstrap.jsp"></jsp:include>
 </head>
 <body>
+<jsp:include page="navbar.jsp"></jsp:include>
 <div>
 <h1><c:out value="${currproduct.productname}"/></h1>
 </div>
@@ -22,7 +24,7 @@
 			</thead>
 			<tbody>
 					<tr>
-						<td><img src="${currproduct.productpicture}"></img></td>
+						<td><img src="${currproduct.productpicture}" height="200" width="200"></img></td>
 						<td><c:out value="${currproduct.productprice}" /></td>
 						<td><form action="AddToCart" method="get">
 						<input type="hidden" name="productid" id="productid" value="${currproduct.productid}"/>

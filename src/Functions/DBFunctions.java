@@ -110,7 +110,7 @@ public class DBFunctions {
 	
 	public static List<Spproduct> getProducts(){
 		EntityManager em = DBUtil.getEmFactory().createEntityManager();
-		String qString = "select p from Spproduct";
+		String qString = "select p from Spproduct p";
 		TypedQuery<Spproduct> q = em.createQuery(qString, Spproduct.class);
 		
 		List<Spproduct> r = null;

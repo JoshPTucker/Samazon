@@ -7,8 +7,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>products</title>
+<jsp:include page="bootstrap.jsp"></jsp:include>
 </head>
 <body>
+<jsp:include page="navbar.jsp"></jsp:include>
 	<div>
 		<table class="table table-bordered table-striped table-hover">
 			<thead>
@@ -22,8 +24,8 @@
 			<tbody>
 				<c:forEach var="products" items="${products}">
 					<tr>
-						<td><img src="${products.productpicture}"></img></td>
-						<td><c:out value="${products.procuctname}" /></td>
+						<td><img src="${products.productpicture}" height="100" width="100"></img></td>
+						<td><c:out value="${products.productname}" /></td>
 						<td><c:out value="${products.productprice}" /></td>
 						<td><form action="Details" method="get">
 						<input type="hidden" name="productid" id="productid" value="${products.productid}"/>
