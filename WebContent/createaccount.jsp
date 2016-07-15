@@ -8,12 +8,19 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <jsp:include page="navbar.jsp"></jsp:include>
 <jsp:include page="bootstrap.jsp"></jsp:include>
-<title>Login</title>
+<title>Create Account</title>
 
 <script>
-	function validateLogin() {
-		var email = $('#email').val();
+	function validateNewAccount() {
 		// http://stackoverflow.com/a/46181/11236
+		var email = $('#email').val();
+		var name = $('#username').val();
+		name = (username != '');
+
+		// check to see if a user name was entered
+		if (name) {
+			alert("You forgot to enter your name");				
+		} 
 
 		// check the email
 		var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -31,22 +38,24 @@
 		}
 
 		return (goodpassword && goodemail);
-	}
+	}	
 </script>
 
 </head>
 <body>
 
-	<form onsubmit="return validateLogin()" action="Login"
-		method="get">
-		<h4>Enter your email and password</h4>
-		<input type="text" name="email" id="email" value=""></input> <input
-			type="password" name="password" id="password" value=""></input> <input
-			type="hidden" name="action" id="action" value="login"></input> <input
-			type="submit" name="submit" id="submit" value="Login"></input>
-	</form>
-	
-	<h4><a href="./createaccount">Create Account</a></h4>
+	<h4>Create Account</h4>
+
+	<form onsubmit="return validateLogin()" action="Login" method="post">		
+		<p>Enter your name</p>
+		<input type="text" name="username" id="username" value=""></input> 
+		<p>Enter your email</p>
+		<input type="text" name="email" id="email" value=""></input> 
+		<p>Enter your password</p>
+		<input type="password" name="password" id="password" value=""></input>
+		<input type="hidden" name="action" id="action" value="createaccount"></input>
+		<input type="submit" name="submit" id="submit" value="Submit"></input>
+	</form>	
 
 </body>
 </html>
