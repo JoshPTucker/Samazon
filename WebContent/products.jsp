@@ -25,7 +25,11 @@
 						<td><img src="${products.productpicture}"></img></td>
 						<td><c:out value="${products.procuctname}" /></td>
 						<td><c:out value="${products.productprice}" /></td>
-						<!-- need to add button that takes user to product page -->
+						<td><form action="Details" method="get">
+						<input type="hidden" name="productid" id="productid" value="${products.productid}"/>
+						<input type="submit" name="submit" id="submit" value="Veiw Details">
+						</form>
+						</td>
 						<td><form action="AddToCart" method="get">
 						<input type="hidden" name="productid" id="productid" value="${products.productid}"/>
 						<input type="submit" name="submit" id="submit" value="Add to cart">

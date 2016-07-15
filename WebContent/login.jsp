@@ -46,7 +46,7 @@
 			type="submit" name="submit" id="submit" value="Login"></input>
 	</form>
 	
-	<h4><a href="./createaccount">Create Account</a></h4>
+	<h4><a href="./createaccount.jsp">Create Account</a></h4>
 
 </body>
 </html>

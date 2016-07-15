@@ -49,13 +49,14 @@ public class DBUser {
 		String qString = "Select u from Spuser u " + "where u.useremail = :email";				
 
 		TypedQuery<Spuser> q = em.createQuery(qString, Spuser.class);
-		q.setParameter("useremail", email);		
+		q.setParameter("email", email);		
 		Spuser user = null;
 		
 		try {
 			user = q.getSingleResult();
 		} catch (NoResultException e) {
 			System.out.println(e);
+			return null;
 		} finally {
 			em.close();
 		}
