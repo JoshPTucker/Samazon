@@ -10,10 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import customTools.DBUser;
-import customTools.RestaurantDB;
-import model.RUser;
-import model.Restaverage;
+import Functions.DBFunctions;
+import Functions.DBUser;
 import model.Sporder;
 import model.Spuser;
 
@@ -59,18 +57,17 @@ public class Login extends HttpServlet {
             nextURL = "/login.jsp";
             
         }else{
-            user = DBUser.getUserByEmail(useremail);
+            user = DBUser.getValidUser(useremail, userpassword);
             
-            if (DBUser.isValidUser(useremail, userpassword)){
-            	
+            if (user != null){            	
             	
             	System.out.println("found valid user"+useremail+" "+userpassword);
                 session.setAttribute("user", user); 
-                session.setAttribute("username", String.valueOf(user.getName()));
+                session.setAttribute("username", String.valueOf(user.getUsername()));
                 
                 // TO DO: add shopping cart to the database
                 List<Sporder> cart = (List<Sporder>)session.getAttribute("cart");
-                DBfunction.addCart(cart);    
+                DBFunctions.addCart(cart);                 
                 
                 nextURL = "/showproducts.jsp";
             }else{
@@ -78,8 +75,7 @@ public class Login extends HttpServlet {
             }
             
         }
-        //redirect to next page as indicated by the value of the nextURL variable
-        //getServletContext().getRequestDispatcher(nextURL).forward(request,response);
+        //redirect to the next page    
         response.sendRedirect(request.getContextPath() + nextURL);
 	}
 
