@@ -16,10 +16,10 @@ import model.Spuser;
 public class DBFunctions {
 	public static List<Sporder> getOrders(long id, int status){
 		EntityManager em = DBUtil.getEmFactory().createEntityManager();
-		String qString = "Select o from sporder o where o.status=:status and o.userid=:userid";
+		String qString = "Select o from Sporder o where o.status=:status and o.spuser.userid=:userid";
 		TypedQuery<Sporder> q = em.createQuery(qString, Sporder.class);
 		q.setParameter("userid",id);
-		q.setParameter("status",status);
+		q.setParameter("status",status+ "");
 		
 		List<Sporder> r = null;
 		try{

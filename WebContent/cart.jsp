@@ -17,18 +17,18 @@
 				<tr>
 					<th>Product name</th>
 					<th>Product price</th>
-					<th>Status</th>
+					<th>Quantity</th>
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="order" items="${orders}">
+				<c:forEach var="order" items="${cart}">
 					<tr>
-						<td><c:out value="${orders.spproduct.procuctname}" /></td>
-						<td><c:out value="${orders.spproduct.poductprice}" /></td>
-						<td><c:out value="${orders.quantity}" /></td>
-						<td><form action="" method="">
-								<input type="hidden" name="productid" id="productid" value="${orders.spproduct.productid}"></input>
-								<input type="submit" name="submit" id="submit" value=""></input>
+						<td><c:out value="${order.spproduct.productname}" /></td>
+						<td><c:out value="${order.spproduct.productprice}" /></td>
+						<td><c:out value="${order.quantity}" /></td>
+						<td><form action="ViewOrder" method="get">
+								<input type="hidden" name="productid" id="productid" value="${order.spproduct.productid}"></input>
+								<input type="submit" name="submit" id="submit" value="purchase"></input>
 							</form></td>
 					</tr>
 				</c:forEach>
