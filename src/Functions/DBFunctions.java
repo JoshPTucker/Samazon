@@ -76,6 +76,20 @@ public class DBFunctions {
         }
     }
 	
+	public static void update(Sporder o) {
+        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        EntityTransaction trans = em.getTransaction();
+        try {
+            trans.begin();
+            em.merge(o);
+            trans.commit();
+        } catch (Exception e) {
+            trans.rollback();
+        } finally {
+            em.close();
+        }
+    }
+	
 	public static List<Spproduct> search(String search){
 		EntityManager em = DBUtil.getEmFactory().createEntityManager();
 		String qString = "select p from Spproduct p "
@@ -86,6 +100,36 @@ public class DBFunctions {
 		List<Spproduct> r = null;
 		try{
 			r = q.getResultList();
+		}catch(NoResultException e){
+			System.out.println(e);
+			em.close();
+		}
+		return r;
+	}
+	
+	public static List<Spproduct> getProducts(){
+		EntityManager em = DBUtil.getEmFactory().createEntityManager();
+		String qString = "select p from Spproduct";
+		TypedQuery<Spproduct> q = em.createQuery(qString, Spproduct.class);
+		
+		List<Spproduct> r = null;
+		try{
+			r = q.getResultList();
+		}catch(NoResultException e){
+			System.out.println(e);
+			em.close();
+		}
+		return r;
+	}
+	
+	public static Sporder getOrderByID(String id){
+		EntityManager em = DBUtil.getEmFactory().createEntityManager();
+		String qString = "Select o from Sporder o where o.orderid=:oid";
+		TypedQuery<Sporder> q = em.createQuery(qString, Sporder.class);
+		q.setParameter("oid", new BigDecimal(id));
+		Sporder r = null;
+		try{
+			r = q.getSingleResult();
 		}catch(NoResultException e){
 			System.out.println(e);
 			em.close();

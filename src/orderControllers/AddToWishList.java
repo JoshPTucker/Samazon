@@ -2,8 +2,6 @@ package orderControllers;
 
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,23 +15,19 @@ import model.Sporder;
 import model.Spproduct;
 import model.Spuser;
 
-/**
- * Servlet implementation class AddToCart
- */
-@WebServlet("/AddToCart")
-public class AddToCart extends HttpServlet {
+
+@WebServlet("/AddToWishList")
+public class AddToWishList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public AddToCart() {
+    public AddToWishList() {
         super();
-        // TODO Auto-generated constructor stub
     }
-
+    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		Spuser user = (Spuser)session.getAttribute("user");
 		
-		List<Sporder> cart = (List<Sporder>)session.getAttribute("cart");
 		Spproduct product = DBFunctions.getProductByID(request.getParameter("productid"));
 		
 		Sporder order = new Sporder();
@@ -42,27 +36,14 @@ public class AddToCart extends HttpServlet {
 		order.setQuantity(new BigDecimal(request.getParameter("quantity")));
 		order.setSpproduct(product);
 		order.setSpuser(user);
-		order.setStatus("2");
+		order.setStatus("3");
 		
-		if(user==null){
-			if(cart==null){
-				cart = new ArrayList<Sporder>();
-				cart.add(order);
-			}
-			else{
-				cart.add(order);
-			}
-			session.setAttribute("cart", cart);
-		}
-		else{
-			DBFunctions.insert(order);
-		}
+		DBFunctions.insert(order);
 		
-		request.getRequestDispatcher("/Cart").forward(request, response);
+		request.getRequestDispatcher("/Wishlist").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

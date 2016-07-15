@@ -1,8 +1,6 @@
 package orderControllers;
 
 import java.io.IOException;
-import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -18,49 +16,37 @@ import model.Spproduct;
 import model.Spuser;
 
 /**
- * Servlet implementation class AddToCart
+ * Servlet implementation class Wishlist
  */
-@WebServlet("/AddToCart")
-public class AddToCart extends HttpServlet {
+@WebServlet("/Wishlist")
+public class Wishlist extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-    public AddToCart() {
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public Wishlist() {
         super();
         // TODO Auto-generated constructor stub
     }
 
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		Spuser user = (Spuser)session.getAttribute("user");
 		
-		List<Sporder> cart = (List<Sporder>)session.getAttribute("cart");
-		Spproduct product = DBFunctions.getProductByID(request.getParameter("productid"));
+		List<Sporder> wishlist = DBFunctions.getOrders(user.getUserid(),3);
 		
-		Sporder order = new Sporder();
-		
-		
-		order.setQuantity(new BigDecimal(request.getParameter("quantity")));
-		order.setSpproduct(product);
-		order.setSpuser(user);
-		order.setStatus("2");
-		
-		if(user==null){
-			if(cart==null){
-				cart = new ArrayList<Sporder>();
-				cart.add(order);
-			}
-			else{
-				cart.add(order);
-			}
-			session.setAttribute("cart", cart);
-		}
-		else{
-			DBFunctions.insert(order);
-		}
-		
-		request.getRequestDispatcher("/Cart").forward(request, response);
+		request.setAttribute("wishlist", wishlist);
+
+		request.getRequestDispatcher("/wishlist.jsp").forward(request,response);
 	}
 
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
