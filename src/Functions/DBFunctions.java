@@ -11,6 +11,7 @@ import javax.persistence.TypedQuery;
 import Functions.DBUtil;
 import model.Sporder;
 import model.Spproduct;
+import model.Spuser;
 
 public class DBFunctions {
 	public static List<Sporder> getOrders(long id, int status){
@@ -136,4 +137,18 @@ public class DBFunctions {
 		}
 		return r;
 	}
+	
+	public static void insert(Spuser user) {
+        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        EntityTransaction trans = em.getTransaction();
+        try {
+            trans.begin();
+            em.persist(user);
+            trans.commit();
+        } catch (Exception e) {
+            trans.rollback();
+        } finally {
+            em.close();
+        }
+    }
 }

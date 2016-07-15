@@ -52,13 +52,24 @@ public class Login extends HttpServlet {
         
         System.out.println("LoginServlet action: "+action);
         if (action.equals("logout")){
-        	System.out.println("LoginServlet: action=logout");
+        	System.out.println("Login Servlet: Logout");
             session.invalidate();
             nextURL = "/login.jsp";
             
-        }else{
-            user = DBUser.getValidUser(useremail, userpassword);
-            
+        }else{        	
+        	
+        	if (action.equals("createaccount")) {
+        		//create an account for a new user
+        		System.out.println("Login: creating an account for a new user");
+        		String username = request.getParameter("username");  
+        		user = DBUser.addNewUser(username, useremail, userpassword);        	
+        	
+        	} else {        
+        		//validate the user for login
+        		System.out.println("Login: validating a user");
+        		user = DBUser.getValidUser(useremail, userpassword);
+        	}
+        	
             if (user != null){            	
             	
             	System.out.println("found valid user"+useremail+" "+userpassword);
@@ -69,7 +80,7 @@ public class Login extends HttpServlet {
                 List<Sporder> cart = (List<Sporder>)session.getAttribute("cart");
                 DBFunctions.addCart(cart);                 
                 
-                nextURL = "/showproducts.jsp";
+                nextURL = "/products.jsp";
             }else{
                 nextURL = "/login.jsp";
             }
