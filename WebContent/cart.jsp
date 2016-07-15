@@ -24,7 +24,7 @@
 						<td><c:out value="${orders.spproduct.poductprice}" /></td>
 						<td><c:out value="${orders.quantity}" /></td>
 						<td><form action="" method="">
-								<input type="hidden" name="" id=""></input>
+								<input type="hidden" name="productid" id="productid" value="${orders.spproduct.productid}"></input>
 								<input type="submit" name="submit" id="submit" value=""></input>
 							</form></td>
 					</tr>
