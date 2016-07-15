@@ -43,6 +43,8 @@ public class ConfirmOrder extends HttpServlet {
 			DBFunctions.update(o);
 		}
 		
+		request.setAttribute("cart", null);
+		
 		request.getRequestDispatcher("/Profile").forward(request, response);
 	}
 

@@ -46,8 +46,11 @@ public class MoveWishlistToCart extends HttpServlet {
 		order.setStatus("2");			
 		
 		if(order != null){
-			DBFunctions.update(order);			
+			DBFunctions.update(order);
+			List<Sporder> cart = (List<Sporder>)session.getAttribute("cart");
+			cart.add(order);
 		}
+		
 		
 		request.getRequestDispatcher("/Wishlist").forward(request, response);
 	}
