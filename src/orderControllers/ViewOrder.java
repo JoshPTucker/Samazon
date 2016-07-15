@@ -26,7 +26,7 @@ public class ViewOrder extends HttpServlet {
 		HttpSession session = request.getSession();
 		Spuser user = (Spuser)session.getAttribute("user");
 		
-		List<Sporder> orders = DBFunctions.getOrders(user.getUserid(), 3);
+		List<Sporder> orders = DBFunctions.getOrders(user.getUserid(), 2);
 		
 		double total = 0;
 		
@@ -34,10 +34,10 @@ public class ViewOrder extends HttpServlet {
 			total+= o.getQuantity().doubleValue()*o.getSpproduct().getProductprice().doubleValue();
 		}
 
-		request.setAttribute("order", orders);
+		request.setAttribute("orders", orders);
 		request.setAttribute("total", total);
 		
-		request.getRequestDispatcher("/confirmOrder.jsp").forward(request, response);
+		request.getRequestDispatcher("/confirmorder.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

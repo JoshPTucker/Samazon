@@ -27,7 +27,7 @@
 		<tbody>
 			<c:forEach var="order" items="${orders}">
 				<tr>
-					<td><img src="${order.spproduct.productpicture}"></img></td>
+					<td><img src="${order.spproduct.productpicture}" height="100" width="100"></img></td>
 					<td><c:out value="${order.spproduct.productname}" /></td>
 					<td><c:out value="${order.spproduct.productdescription}" /></td>
 					<td><c:out value="${order.spproduct.productprice}" /></td>
