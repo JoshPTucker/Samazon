@@ -29,6 +29,4 @@ public class DBFunctionTests {
 		assertTrue(p.getProductid()==10);
 		
 	}
-	
-	
 }
