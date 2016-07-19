@@ -25,16 +25,25 @@ public class ViewOrder extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		Spuser user = (Spuser)session.getAttribute("user");
+		double shipping = 1.5;
 		
 		List<Sporder> orders = DBFunctions.getOrders(user.getUserid(), 2);
 		
 		double total = 0;
+		double volume = 0;
 		
 		for(Sporder o:orders){
-			total+= o.getQuantity().doubleValue()*o.getSpproduct().getProductprice().doubleValue();
+			double q = o.getQuantity().doubleValue();
+			double p = o.getSpproduct().getProductprice().doubleValue();
+			double t = o.getSpproduct().getTax().doubleValue();
+			
+			volume++;
+			
+			total+= q*p*t;
 		}
 
 		request.setAttribute("orders", orders);
+		request.setAttribute("shipping", volume*1.5);
 		request.setAttribute("total", total);
 		
 		request.getRequestDispatcher("/confirmorder.jsp").forward(request, response);

@@ -69,6 +69,24 @@ public class DBFunctions {
             em.close();
         }
     }
+
+	public static void remove(Sporder o) {
+		if(o == null){
+			return ;
+		}
+        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        EntityTransaction trans = em.getTransaction();
+        try {
+            trans.begin();
+            em.remove(em.merge(o));
+            trans.commit();
+        } catch (Exception e) {
+            trans.rollback();
+        } finally {
+            em.close();
+        }
+    }
+	
 	
 	public static void insert(Spproduct o) {
 		if(o == null){
