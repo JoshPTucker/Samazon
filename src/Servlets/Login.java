@@ -86,6 +86,13 @@ public class Login extends HttpServlet {
                 nextURL = "/Products";
             }else{
                 nextURL = "/login.jsp";
+                String att = (String)session.getAttribute("loginattempts");
+                if(att!=null){
+                	
+                }
+                else{
+                	session.setAttribute("loginattempts", "1");
+                }
             }
             
         }
