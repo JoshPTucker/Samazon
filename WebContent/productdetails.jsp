@@ -75,24 +75,29 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="reviews" items="${reviews}">
+				<c:forEach var="review" items="${reviews}">
 					<tr>
-						<td><c:out value="${reviews.spuser.username }" /></td>
-						<td><c:out value="${reviews.productreview }" /></td>
-						<td><c:if test="${reviews.sentiment >=1}">
+						<td><c:out value="${review.spuser.username }" /></td>
+						<td><c:out value="${review.productreview }" /></td>
+						<td><c:if test="${review.sentiment >0}">
 								<img src="http://omgface.com/veryhappy/Pikachu21.jpg"
 									height="50" width="50"></img>
-							</c:if> <c:if test="${reviews.sentiment <=1 }">
+							</c:if> <c:if test="${review.sentiment <0 }">
 								<img
 									src="https://tse1.mm.bing.net/th?id=OIP.M309624a62837143494829c02e065181do0&pid=15.1&P=0&w=324&h=183"
 									height="50" width="50"></img>
-							</c:if></td>
+							</c:if>
+							<c:if test="${review.sentiment==0}">
+							<img src="https://tse1.mm.bing.net/th?id=OIP.M4ad652260ec71f1a54d9734f9a6f28f8o0&pid=15.1&P=0&w=183&h=183" height="50" width="50"></img>
+							</c:if>
+						</td>
 						<td><form action="" method="">
 								<fieldset></fieldset>
 								<fieldset>
 									<input type="submit" name="submit" value="helpful">
 								</fieldset>
-							</form></td>
+							</form>
+						</td>
 					</tr>
 				</c:forEach>
 			</tbody>
