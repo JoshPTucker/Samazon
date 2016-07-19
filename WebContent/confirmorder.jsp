@@ -23,6 +23,7 @@
 				<th>Price</th>
 				<th>Quantity</th>	
 				<th>Tax</th>		
+				<th>Item total</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -33,7 +34,8 @@
 					<td><c:out value="${order.spproduct.productdescription}" /></td>
 					<td>$<c:out value="${order.spproduct.productprice}" /></td>
 					<td><c:out value="${order.quantity}" /></td>	
-					<td><c:out value="${order.spproduct.tax}"/></td>								
+					<td><c:out value="${order.spproduct.tax}"/></td>
+					<td><c:out value="${order.spproduct.productprice * (1+order.spproduct.tax)*order.quantity}"	/></td>							
 					</tr>
 				</c:forEach>
 			</tbody>
@@ -41,7 +43,10 @@
 		
 		
 		<form action="ConfirmOrder" method="get">
-			<h4>Total: $ ${total}			
+			<h4>
+			Shipping: $ ${shipping} 
+			</h4>
+			<h4>Total: $ ${total}		
 			<input type="submit" name="submit" id="submit" value="Purchase"></input>
 			</h4>
 		</form>
