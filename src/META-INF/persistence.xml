@@ -5,6 +5,7 @@
 		<class>model.Sporder</class>
 		<class>model.Spproduct</class>
 		<class>model.Spuser</class>
+		<class>model.Spreview</class>
 		<properties>
 			<property name="eclipselink.exclude-eclipselink-orm" value="false"/>
 			<property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@localhost:1521:orcl"/>

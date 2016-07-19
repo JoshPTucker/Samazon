@@ -33,6 +33,10 @@ public class Spproduct implements Serializable {
 	@OneToMany(mappedBy="spproduct")
 	private List<Sporder> sporders;
 
+	//bi-directional many-to-one association to Spreview
+	@OneToMany(mappedBy="spproduct")
+	private List<Spreview> spreviews;
+
 	public Spproduct() {
 	}
 
@@ -96,6 +100,28 @@ public class Spproduct implements Serializable {
 		sporder.setSpproduct(null);
 
 		return sporder;
+	}
+
+	public List<Spreview> getSpreviews() {
+		return this.spreviews;
+	}
+
+	public void setSpreviews(List<Spreview> spreviews) {
+		this.spreviews = spreviews;
+	}
+
+	public Spreview addSpreview(Spreview spreview) {
+		getSpreviews().add(spreview);
+		spreview.setSpproduct(this);
+
+		return spreview;
+	}
+
+	public Spreview removeSpreview(Spreview spreview) {
+		getSpreviews().remove(spreview);
+		spreview.setSpproduct(null);
+
+		return spreview;
 	}
 
 }

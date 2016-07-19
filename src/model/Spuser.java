@@ -32,6 +32,10 @@ public class Spuser implements Serializable {
 	@OneToMany(mappedBy="spuser")
 	private List<Sporder> sporders;
 
+	//bi-directional many-to-one association to Spreview
+	@OneToMany(mappedBy="spuser")
+	private List<Spreview> spreviews;
+
 	public Spuser() {
 	}
 
@@ -95,6 +99,28 @@ public class Spuser implements Serializable {
 		sporder.setSpuser(null);
 
 		return sporder;
+	}
+
+	public List<Spreview> getSpreviews() {
+		return this.spreviews;
+	}
+
+	public void setSpreviews(List<Spreview> spreviews) {
+		this.spreviews = spreviews;
+	}
+
+	public Spreview addSpreview(Spreview spreview) {
+		getSpreviews().add(spreview);
+		spreview.setSpuser(this);
+
+		return spreview;
+	}
+
+	public Spreview removeSpreview(Spreview spreview) {
+		getSpreviews().remove(spreview);
+		spreview.setSpuser(null);
+
+		return spreview;
 	}
 
 }

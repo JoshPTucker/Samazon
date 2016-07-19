@@ -46,5 +46,33 @@
 	<h2>Description</h2>
 	<h3><c:out value="${currproduct.productdescription}" /></h3>
 	</div>
+	<div>
+	<form action="ReviewServlet" method="post">
+	<fieldset>
+	<textarea rows="6" cols="50" name="reviewtext" id="reviewtext" value=""></textarea>
+	</fieldset>
+	<fieldset>
+	<input type="submit" name="submit" value="submit">
+	</fieldset>
+	</form>
+	</div>
+	<div>
+	<table class="table table-bordered table-striped table-hover">
+			<thead>
+				<tr>
+					<th>User</th>
+					<th>Review</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach var="reviews" items="${reviews}">
+					<tr>
+					<td><c:out value="${reviews.spuser.username }"/></td>
+					<td><c:out value="${reviews.productreview }"/></td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+	</div>
 </body>
 </html>
