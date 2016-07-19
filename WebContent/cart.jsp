@@ -30,7 +30,7 @@
 						<td><c:out value="${order.spproduct.productname}" /></td>
 						<td><c:out value="${order.spproduct.productprice}" /></td>
 						<td><c:out value="${order.quantity}" /></td>
-						<td><form action="" method="" > 
+						<td><form action="RemoveFromCart" method="get" > 
 						<input type="hidden" name="orderid" value="${order.orderid}" id="orderid"/>
 						<input type="submit" name="submit" id="submit" value="remove"/>
 						</form></td>
