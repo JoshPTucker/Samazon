@@ -29,6 +29,8 @@ public class Spproduct implements Serializable {
 
 	private BigDecimal productprice;
 
+	private BigDecimal tax;
+
 	//bi-directional many-to-one association to Sporder
 	@OneToMany(mappedBy="spproduct")
 	private List<Sporder> sporders;
@@ -78,6 +80,14 @@ public class Spproduct implements Serializable {
 
 	public void setProductprice(BigDecimal productprice) {
 		this.productprice = productprice;
+	}
+
+	public BigDecimal getTax() {
+		return this.tax;
+	}
+
+	public void setTax(BigDecimal tax) {
+		this.tax = tax;
 	}
 
 	public List<Sporder> getSporders() {
