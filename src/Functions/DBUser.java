@@ -64,12 +64,16 @@ public class DBUser {
 		try {
 			
 			// get the expected Hash of the password + the salt stored in the database			
-			String expectedHash = PasswordUtil.hashPasswordPlusSalt(password, user.getSalt());
+			//String expectedHash = PasswordUtil.hashPasswordPlusSalt(password, user.getSalt());
+			String expectedHash = user.getHashedpassword();
 			
 			// if the expected hash does not match the user entered password + salt 
 			// then set user to null
 			if (!PasswordUtil.compareSaltedHashWithUserEnteredPwd(user.getSalt(), password, expectedHash)) {
 				user = null;
+				System.out.println("DBUser password does not compare, setting user to null");
+			} else {
+				System.out.println("DBUser password validated: "+password);
 			}
 			
 		} catch (NoSuchAlgorithmException e) {
