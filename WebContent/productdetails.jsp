@@ -72,6 +72,7 @@
 				<tr>
 					<th>User</th>
 					<th>Review</th>
+					
 				</tr>
 			</thead>
 			<tbody>
@@ -91,9 +92,11 @@
 							<img src="https://tse1.mm.bing.net/th?id=OIP.M4ad652260ec71f1a54d9734f9a6f28f8o0&pid=15.1&P=0&w=183&h=183" height="50" width="50"></img>
 							</c:if>
 						</td>
-						<td><form action="" method="">
-								<fieldset></fieldset>
+						<td><c:out value="${review.helpful}"></c:out></td>
+						<td><form action="Helpful" method="post">
+								
 								<fieldset>
+									<input type="hidden" id="reviewid" name="reviewid" value="${review.reviewid}"/>
 									<input type="submit" name="submit" value="helpful">
 								</fieldset>
 							</form>

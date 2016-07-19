@@ -20,6 +20,8 @@ public class Spreview implements Serializable {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SPREVIEWS_REVIEWID_GENERATOR")
 	private long reviewid;
 
+	private BigDecimal helpful;
+
 	private String productreview;
 
 	private BigDecimal sentiment;
@@ -43,6 +45,14 @@ public class Spreview implements Serializable {
 
 	public void setReviewid(long reviewid) {
 		this.reviewid = reviewid;
+	}
+
+	public BigDecimal getHelpful() {
+		return this.helpful;
+	}
+
+	public void setHelpful(BigDecimal helpful) {
+		this.helpful = helpful;
 	}
 
 	public String getProductreview() {
