@@ -63,20 +63,21 @@ public class ReviewServlet extends HttpServlet {
 		long productid= Integer.parseInt(id);
 		
 		Spproduct product = DBFunctions.getProductByID(id);
-		int sentiment = Sentiment.getSentiment(reviewtext);
+		
+		int sent = Sentiment.getSentiment(reviewtext);
+		BigDecimal sentiment = new BigDecimal(sent);
 		
 		Spreview rev = new Spreview();
 		rev.setProductreview(reviewtext);
 		rev.setSpproduct(product);
 		rev.setSpuser(user);
-		rev.set
+		//rev.setSentiment(sentiment);
 		ReviewUtil.insert(rev);
+		
 		List<Spreview> r=ReviewUtil.getProductReviews(productid);
 		ArrayList<Spreview> reviews=new ArrayList<Spreview>();
 		reviews.addAll(r);
 
-		
-		request.setAttribute("sentimentface", );
 		session.setAttribute("currproduct", product);
 		session.setAttribute("reviews", reviews);
 		String nextURL="/productdetails.jsp";
