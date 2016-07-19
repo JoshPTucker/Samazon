@@ -55,17 +55,15 @@ public class ReviewServlet extends HttpServlet {
 		//get current date time with Date()
 		Date date = new Date();
 		String reviewtext = request.getParameter("reviewtext");
-//		Number rating;
-//		rating= Integer.parseInt(request.getParameter("rating"));
-//		BigDecimal r=new BigDecimal( rating.toString());
+
 		Spuser user = (Spuser) session.getAttribute("user");
 		String id= request.getParameter("productid");
 		long productid= Integer.parseInt(id);
 		
 		Spproduct product = DBFunctions.getProductByID(id);
 		
-		int sent = Sentiment.getSentiment(reviewtext);
-		BigDecimal sentiment = new BigDecimal(sent);
+		Number sent = Sentiment.getSentiment(reviewtext);
+		BigDecimal sentiment = new BigDecimal(sent.toString());
 		
 		Spreview rev = new Spreview();
 		rev.setProductreview(reviewtext);

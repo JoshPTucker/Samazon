@@ -9,11 +9,11 @@ public class Sentiment {
 		int count=0;
 		String currentDirectory = new File("").getAbsolutePath();
 		try{
-			String filename = currentDirectory+"/workspace/Bullhorn/WebContent/texts/happy.txt";
+			String filename = currentDirectory+"/workspace/Samazon/WebContent/texts/happy.txt";
 			File happyfile = new File(filename);
 			Scanner happy = new Scanner(happyfile);
 			
-			String filename2 = currentDirectory+"/workspace/Bullhorn/WebContent/texts/sad.txt";
+			String filename2 = currentDirectory+"/workspace/Samazon/WebContent/texts/sad.txt";
 			File sadfile = new File(filename2);
 			Scanner sad = new Scanner(sadfile);
 			
