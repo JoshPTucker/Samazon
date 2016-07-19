@@ -58,6 +58,7 @@
 	</form>
 	</div>
 	<div>
+	<h3>Please write a review</h3>
 	<table class="table table-bordered table-striped table-hover">
 			<thead>
 				<tr>
