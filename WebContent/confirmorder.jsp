@@ -21,7 +21,8 @@
 				<th>Product Name</th>
 				<th>Product Description</th>
 				<th>Price</th>
-				<th>Quantity</th>			
+				<th>Quantity</th>	
+				<th>Tax</th>		
 			</tr>
 		</thead>
 		<tbody>
@@ -31,7 +32,8 @@
 					<td><c:out value="${order.spproduct.productname}" /></td>
 					<td><c:out value="${order.spproduct.productdescription}" /></td>
 					<td>$<c:out value="${order.spproduct.productprice}" /></td>
-					<td><c:out value="${order.quantity}" /></td>									
+					<td><c:out value="${order.quantity}" /></td>	
+					<td><c:out value="${order.spproduct.tax}"/></td>								
 					</tr>
 				</c:forEach>
 			</tbody>
