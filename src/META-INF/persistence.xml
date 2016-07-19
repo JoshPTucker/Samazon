@@ -4,8 +4,8 @@
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 		<class>model.Sporder</class>
 		<class>model.Spproduct</class>
-		<class>model.Spuser</class>
 		<class>model.Spreview</class>
+		<class>model.Spuser</class>
 		<properties>
 			<property name="eclipselink.exclude-eclipselink-orm" value="false"/>
 			<property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@localhost:1521:orcl"/>

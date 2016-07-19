@@ -79,6 +79,9 @@
 					<tr>
 						<td><c:out value="${reviews.spuser.username }" /></td>
 						<td><c:out value="${reviews.productreview }" /></td>
+						<td>
+						<c:if value="${ }"/>
+						</td>
 						<td><form action="" method="">
 								<fieldset></fieldset>
 								<fieldset>

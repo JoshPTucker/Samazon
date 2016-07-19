@@ -2,6 +2,7 @@ package model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.List;
 
 
@@ -19,6 +20,9 @@ public class Spuser implements Serializable {
 	@SequenceGenerator(name="SPUSERS_USERID_GENERATOR", sequenceName="SPUSERS_SEQ", allocationSize=1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SPUSERS_USERID_GENERATOR")
 	private long userid;
+
+	@Column(name="\"ADMIN\"")
+	private BigDecimal admin;
 
 	private String hashedpassword;
 
@@ -45,6 +49,14 @@ public class Spuser implements Serializable {
 
 	public void setUserid(long userid) {
 		this.userid = userid;
+	}
+
+	public BigDecimal getAdmin() {
+		return this.admin;
+	}
+
+	public void setAdmin(BigDecimal admin) {
+		this.admin = admin;
 	}
 
 	public String getHashedpassword() {

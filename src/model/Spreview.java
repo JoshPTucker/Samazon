@@ -2,6 +2,7 @@ package model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 
 /**
@@ -20,6 +21,8 @@ public class Spreview implements Serializable {
 	private long reviewid;
 
 	private String productreview;
+
+	private BigDecimal sentiment;
 
 	//bi-directional many-to-one association to Spproduct
 	@ManyToOne
@@ -48,6 +51,14 @@ public class Spreview implements Serializable {
 
 	public void setProductreview(String productreview) {
 		this.productreview = productreview;
+	}
+
+	public BigDecimal getSentiment() {
+		return this.sentiment;
+	}
+
+	public void setSentiment(BigDecimal sentiment) {
+		this.sentiment = sentiment;
 	}
 
 	public Spproduct getSpproduct() {

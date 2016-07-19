@@ -17,6 +17,7 @@ import javax.servlet.http.HttpSession;
 
 import Functions.DBFunctions;
 import customTools.ReviewUtil;
+import customTools.Sentiment;
 import model.Spproduct;
 import model.Spreview;
 import model.Spuser;
@@ -62,15 +63,20 @@ public class ReviewServlet extends HttpServlet {
 		long productid= Integer.parseInt(id);
 		
 		Spproduct product = DBFunctions.getProductByID(id);
+		int sentiment = Sentiment.getSentiment(reviewtext);
 		
 		Spreview rev = new Spreview();
 		rev.setProductreview(reviewtext);
 		rev.setSpproduct(product);
 		rev.setSpuser(user);
+		rev.set
 		ReviewUtil.insert(rev);
 		List<Spreview> r=ReviewUtil.getProductReviews(productid);
 		ArrayList<Spreview> reviews=new ArrayList<Spreview>();
 		reviews.addAll(r);
+
+		
+		request.setAttribute("sentimentface", );
 		session.setAttribute("currproduct", product);
 		session.setAttribute("reviews", reviews);
 		String nextURL="/productdetails.jsp";

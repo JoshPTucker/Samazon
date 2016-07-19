@@ -17,7 +17,7 @@ public class Spproduct implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="SPPRODUCTS_PRODUCTID_GENERATOR", sequenceName="SPPRODUCTS_SEQ" ,allocationSize=1)
+	@SequenceGenerator(name="SPPRODUCTS_PRODUCTID_GENERATOR", sequenceName="SPPRODUCTS_SEQ", allocationSize=1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SPPRODUCTS_PRODUCTID_GENERATOR")
 	private long productid;
 
