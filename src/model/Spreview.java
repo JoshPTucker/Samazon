@@ -15,7 +15,7 @@ public class Spreview implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="SPREVIEWS_REVIEWID_GENERATOR", sequenceName="SPREVIEWS_SEQ", allocationSize=1)
+	@SequenceGenerator(name="SPREVIEWS_REVIEWID_GENERATOR", sequenceName="SPREVIEWS_SEQ")
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SPREVIEWS_REVIEWID_GENERATOR")
 	private long reviewid;
 
