@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import Functions.DBFunctions;
 import Functions.DBUser;
+import customTools.emailUtil;
 import model.Sporder;
 import model.Spuser;
 
@@ -88,7 +89,18 @@ public class Login extends HttpServlet {
                 nextURL = "/login.jsp";
                 String att = (String)session.getAttribute("loginattempts");
                 if(att!=null){
-                	
+                	int atts = Integer.parseInt(att);
+                	if(atts>=2){
+                		String to = "admin@samazon.com";
+                		String from = "donotreply@samazon.com";
+                		String subject = "User failed attempts";
+                		String body = "Login in for user: "+ useremail +" failed repeatedly";
+                		emailUtil.sendEmail(to, from, subject, body);
+                	}
+                	else{
+                		atts++;
+                    	session.setAttribute("loginattempts", ""+atts);
+                	}
                 }
                 else{
                 	session.setAttribute("loginattempts", "1");
@@ -99,5 +111,4 @@ public class Login extends HttpServlet {
         //redirect to the next page    
         response.sendRedirect(request.getContextPath() + nextURL);
 	}
-
 }

@@ -70,6 +70,23 @@ public class DBFunctions {
         }
     }
 	
+	public static void insert(Spproduct o) {
+		if(o == null){
+			return ;
+		}
+        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        EntityTransaction trans = em.getTransaction();
+        try {
+            trans.begin();
+            em.persist(o);
+            trans.commit();
+        } catch (Exception e) {
+            trans.rollback();
+        } finally {
+            em.close();
+        }
+    }
+	
 	public static void update(Sporder o) {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();

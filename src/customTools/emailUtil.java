@@ -16,14 +16,14 @@ public class emailUtil {
 	public static void sendEmail(String to, String from, String subject, String body){
 		Properties props = new Properties();
 		props.put("mail.transport.protocol", "smtp");
-		props.put("mail.smtps.host", "smtp");
-		props.put("mail.smtps.port", 8081);
-		props.put("mail.smtps.auth", "false");
-		props.put("mail.smtps.quitwait", "false");
+		props.put("mail.smtp.host", "localhost");
+		props.put("mail.smtp.port", 8081);
+		props.put("mail.smtp.auth", "false");
+		props.put("mail.smtp.quitwait", "false");
 		//NOTE: Session object is part of javax.mail.Session
 		javax.mail.Session session = javax.mail.Session.getDefaultInstance(props);
 		session.setDebug(true);
-
+		
 		try{
 			Message message = new MimeMessage(session);
 			message.setSubject(subject);
