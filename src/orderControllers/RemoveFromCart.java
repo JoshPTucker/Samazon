@@ -6,9 +6,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import Functions.DBFunctions;
 import model.Sporder;
+import model.Spuser;
 
 /**
  * Servlet implementation class RemoveFromCart
@@ -34,6 +36,11 @@ public class RemoveFromCart extends HttpServlet {
 		Sporder order = DBFunctions.getOrderByID(orderid);
 		
 		DBFunctions.remove(order);
+		
+		HttpSession session = request.getSession();
+		Spuser user = (Spuser)session.getAttribute("user");
+		
+		request.setAttribute("cart", DBFunctions.getOrders(user.getUserid(), 2));
 		
 		request.getRequestDispatcher("/Cart").forward(request, response);
 	}
