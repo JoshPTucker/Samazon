@@ -19,6 +19,9 @@
 			<c:if test="${user ==null}">
 			<li><a href="./login.jsp">Login</a></li>
 			</c:if>
+			<c:if test="${user.admin ==1}">
+			<li><a href="./dashboard.jsp">Admin Dashboard</a></li>
+			</c:if>
 		</ul>
 		<div class="col-sm-3 col-md-3 pull-right">
 		<form class="navbar-form" role="search" action="Search">
