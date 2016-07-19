@@ -4,22 +4,25 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Add Product</title>
 </head>
 <body>
-
-<h2>Enter a new product</h2>
+<h1>Admin Dashboard</h1>
+<h2>Hello, ${user.username}</h2>
+<h3>Add a new product</h3>
 	<form action="AddProduct" method="get">	
-		<p>URL of the Product Image:</p>
-		<input type="text" name="imageurl" id="imageurl" size=100 value=""></input>	
-		<p>Name:</p>
-		<input type="text" name="name" id="name" size=50 value=""></input>
-		<p>Description:</p>
-		<input type="text" name="description" id="description" size=200 value=""></input>
-		<p>Price:</p>
-		<input type="text" name="price" id="price" size=140 value=""></input> 
-		<p>Tax:</p>
-		<input type="text" name="tax" id="tax" size=140 value=""></input> 		
+		
+		<p>Name:
+		<input type="text" name="productname" id="productname" size=50 value=""></input></p>
+		<p>Description:
+		<input type="text" name="description" id="description" size=90 value=""></p>
+		</input>
+		<p>Product Image URL:
+		<input type="text" name="imageurl" id="imageurl" size=90 value=""></input></p>	
+		<p>Price:
+		<input type="text" name="price" id="price" size=10 value=""></input> </p>		
+		<p>Tax Rate:
+		<input type="text" name="taxrate" id="taxrate" size=3 value=""></input> </p>		
 		<input type="submit" name="submit" id="submit" value="Submit"></input>
 	</form>
 
