@@ -2,6 +2,7 @@ package Servlets;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,7 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 //import javax.servlet.http.HttpSession;
 
+import Functions.DBFunctions;
 import customTools.ReviewUtil;
+import model.Spproduct;
 import model.Spreview;
 
 /**
@@ -44,11 +47,14 @@ public class Helpful extends HttpServlet {
 	//HttpSession session =request.getSession();
 	String id = request.getParameter("reviewid");
 	Spreview rev= ReviewUtil.getReviewByID(id);
+	Spproduct product=rev.getSpproduct();
 	BigDecimal helpful=new BigDecimal (rev.getHelpful().intValue()+1);
 	rev.setHelpful( helpful);
 	ReviewUtil.update(rev);
-	request.setAttribute("currproduct", rev.getSpproduct());
-	String nextURL = "/details.jsp";
+	request.setAttribute("currproduct", DBFunctions.getProductByID(product.getProductid()+""));
+	request.setAttribute("reviews", DBFunctions.getProductByID(product.getProductid()+"").getSpreviews());
+	
+	String nextURL = "/productdetails.jsp";
 	request.getRequestDispatcher(nextURL).forward(request,response);
 	}
 

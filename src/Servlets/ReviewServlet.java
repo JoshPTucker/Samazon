@@ -64,12 +64,13 @@ public class ReviewServlet extends HttpServlet {
 		
 		Number sent = Sentiment.getSentiment(reviewtext);
 		BigDecimal sentiment = new BigDecimal(sent.toString());
-		
+		BigDecimal helpful=new BigDecimal(0);
 		Spreview rev = new Spreview();
 		rev.setProductreview(reviewtext);
 		rev.setSpproduct(product);
 		rev.setSpuser(user);
 		rev.setSentiment(sentiment);
+		rev.setHelpful(helpful);
 		ReviewUtil.insert(rev);
 		
 		List<Spreview> r=ReviewUtil.getProductReviews(productid);
