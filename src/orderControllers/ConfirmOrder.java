@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import Functions.DBFunctions;
+import customTools.emailUtil;
 import model.Sporder;
 import model.Spuser;
 
@@ -38,10 +39,23 @@ public class ConfirmOrder extends HttpServlet {
 		
 		List<Sporder> orders = DBFunctions.getOrders(user.getUserid(), 2);
 		
+		String to = user.getUseremail();
+		String from = "donotreply@samazon.com";
+		String subject = "Samazon order receipt";
+		StringBuilder body = new StringBuilder("Here is your receipt from your Samazon order\n");
+		double total = 0;
+		
 		for(Sporder o:orders){
+			body.append(" - "+o.getSpproduct().getProductname());
+			body.append("\n"+o.getSpproduct().getProductprice()+" x "+o.getQuantity().intValue()+"\n");
+			total += o.getSpproduct().getProductprice().doubleValue()*o.getQuantity().intValue();
+			
 			o.setStatus("1");
 			DBFunctions.update(o);
 		}
+		body.append("Total: " + total + "\n Thank you for shopping with us!");
+		
+		emailUtil.sendEmail(to, from, subject, body.toString());
 		
 		request.setAttribute("cart", null);
 		
