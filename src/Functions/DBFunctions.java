@@ -162,4 +162,33 @@ public class DBFunctions {
 		}
 		return r;
 	}
+	
+	public static Spuser getUserByEmail(String email){
+		EntityManager em = DBUtil.getEmFactory().createEntityManager();
+		String qString = "Select u from Spuser u where u.useremail=:email";
+		TypedQuery<Spuser> q = em.createQuery(qString, Spuser.class);
+		q.setParameter("email", email);
+		Spuser r = null;
+		try{
+			r = q.getSingleResult();
+		}catch(NoResultException e){
+			System.out.println(e);
+			em.close();
+		}
+		return r;
+	}
+	
+	public static void update(Spuser u) {
+        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        EntityTransaction trans = em.getTransaction();
+        try {
+            trans.begin();
+            em.merge(u);
+            trans.commit();
+        } catch (Exception e) {
+            trans.rollback();
+        } finally {
+            em.close();
+        }
+    }
 }
