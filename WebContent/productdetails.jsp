@@ -49,6 +49,7 @@
 	<div>
 	<form action="ReviewServlet" method="post">
 	<fieldset>
+	<input type="hidden" name="productid" id="productid" value="${currproduct.productid}"/>
 	<textarea rows="6" cols="50" name="reviewtext" id="reviewtext" value=""></textarea>
 	</fieldset>
 	<fieldset>

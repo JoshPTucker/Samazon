@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import Functions.DBFunctions;
 import customTools.ReviewUtil;
 import model.Spproduct;
 import model.Spreview;
@@ -57,15 +58,20 @@ public class ReviewServlet extends HttpServlet {
 //		rating= Integer.parseInt(request.getParameter("rating"));
 //		BigDecimal r=new BigDecimal( rating.toString());
 		Spuser user = (Spuser) session.getAttribute("user");
-		Spproduct product= (Spproduct) session.getAttribute("currproduct");
-		Spreview rev=new Spreview();
+		String id= request.getParameter("productid");
+		long productid= Integer.parseInt(id);
+		
+		Spproduct product = DBFunctions.getProductByID(id);
+		
+		Spreview rev = new Spreview();
 		rev.setProductreview(reviewtext);
 		rev.setSpproduct(product);
 		rev.setSpuser(user);
 		ReviewUtil.insert(rev);
-		List<Spreview> r=ReviewUtil.getProductReviews(product.getProductid());
+		List<Spreview> r=ReviewUtil.getProductReviews(productid);
 		ArrayList<Spreview> reviews=new ArrayList<Spreview>();
 		reviews.addAll(r);
+		session.setAttribute("currproduct", product);
 		session.setAttribute("reviews", reviews);
 		String nextURL="/productdetails.jsp";
 		response.sendRedirect(request.getContextPath() + nextURL);
