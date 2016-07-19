@@ -38,8 +38,8 @@
 							<form action="AddToWishList" method="get">
 								<input type="hidden" name="productid" id="productid"
 									value="${currproduct.productid}" /> <input type="hidden"
-									name="quantity" id="quantity" value="1" /> <input type="submit"
-									name="submit" id="submit" value="Add to wishlist" />
+									name="quantity" id="quantity" value="1" /> <input
+									type="submit" name="submit" id="submit" value="Add to wishlist" />
 							</form>
 						</c:if></td>
 				</tr>
@@ -79,9 +79,14 @@
 					<tr>
 						<td><c:out value="${reviews.spuser.username }" /></td>
 						<td><c:out value="${reviews.productreview }" /></td>
-						<td>
-						<c:if value="${ }"/>
-						</td>
+						<td><c:if test="${reviews.sentiment >=1}">
+								<img src="http://omgface.com/veryhappy/Pikachu21.jpg"
+									height="50" width="50"></img>
+							</c:if> <c:if test="${reviews.sentiment <=1 }">
+								<img
+									src="https://tse1.mm.bing.net/th?id=OIP.M309624a62837143494829c02e065181do0&pid=15.1&P=0&w=324&h=183"
+									height="50" width="50"></img>
+							</c:if></td>
 						<td><form action="" method="">
 								<fieldset></fieldset>
 								<fieldset>

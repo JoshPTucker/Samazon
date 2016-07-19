@@ -71,7 +71,7 @@ public class ReviewServlet extends HttpServlet {
 		rev.setProductreview(reviewtext);
 		rev.setSpproduct(product);
 		rev.setSpuser(user);
-		//rev.setSentiment(sentiment);
+		rev.setSentiment(sentiment);
 		ReviewUtil.insert(rev);
 		
 		List<Spreview> r=ReviewUtil.getProductReviews(productid);
