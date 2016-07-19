@@ -30,6 +30,10 @@
 						<td><c:out value="${order.spproduct.productname}" /></td>
 						<td><c:out value="${order.spproduct.productprice}" /></td>
 						<td><c:out value="${order.quantity}" /></td>
+						<td><form action="" method="" > 
+						<input type="hidden" name="orderid" value="${order.orderid}" id="orderid"/>
+						<input type="submit" name="submit" id="submit" value="remove"/>
+						</form></td>
 					</tr>
 				</c:forEach>
 			</tbody>
