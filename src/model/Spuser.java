@@ -16,7 +16,7 @@ public class Spuser implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="SPUSERS_USERID_GENERATOR", sequenceName="SPUSERS_SEQ")
+	@SequenceGenerator(name="SPUSERS_USERID_GENERATOR", sequenceName="SPUSERS_SEQ", allocationSize=1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SPUSERS_USERID_GENERATOR")
 	private long userid;
 
